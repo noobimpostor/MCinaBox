@@ -112,11 +112,15 @@ public class CrossKeyboard implements OnscreenInput, KeyMap {
     public boolean onTouch(View v, MotionEvent e) {
 
         if (v == crossKeyBoardExtend.findViewById(R.id.crosskey_bounce)) {
+            if(!moveable){
             if (e.getAction() == MotionEvent.ACTION_DOWN) {
                 sendKeyEvent(((BaseButton) v).getButtonName(), true);
             } else if (e.getAction() == MotionEvent.ACTION_UP) {
                 sendKeyEvent(((BaseButton) v).getButtonName(), false);
-            }
+            }}else{
+                moveViewByTouch(v, e);
+            
+                }
             return true;
         }
         if (v instanceof CrossButton) {
